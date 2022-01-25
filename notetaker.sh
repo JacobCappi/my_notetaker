@@ -16,17 +16,14 @@ read INPUT
 
 if [[ $INPUT -eq ${#DIRS[@]} ]]
 then
-    echo "Name the Dir: "
-    read DIRNAME
+    IFS= read -r -p "Enter Directory Name: " DIRNAME
     mkdir ~/Notes/$DIRNAME
-    echo "Name the Note"
-    read NOTENAME
-    vim "~/Notes/$DIRNAME/$(date +%F)_$NOTENAME"
+    IFS= read -r -p "Enter Note Name: " NOTENAME
+    vim ~/Notes/$DIRNAME/$(date +%F)_$NOTENAME
 elif [[ $INPUT -lt ${#DIRS[@]} ]]
 then
-    echo "Name the Note"
-    read NOTENAME
-    vim "~/Notes/$DIRNAME/$(date +%F)_$NOTENAME"
+    IFS= read -r -p "Enter Note Name: " NOTENAME
+    vim ~/Notes/$DIRNAME/$(date +%F)_$NOTENAME
 else
     echo "Invalid Input"
 fi
