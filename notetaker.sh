@@ -14,6 +14,7 @@ echo "${#DIRS[@]}. [ make new label ]"
 
 read INPUT
 
+IFS=$'\n'
 if [[ $INPUT -eq ${#DIRS[@]} ]]
 then
     IFS= read -r -p "Enter Directory Name: " DIRNAME
@@ -23,7 +24,7 @@ then
 elif [[ $INPUT -lt ${#DIRS[@]} ]]
 then
     IFS= read -r -p "Enter Note Name: " NOTENAME
-    vim ~/Notes/$DIRNAME/$(date +%F)_$NOTENAME
+    vim ${DIRS[$INPUT]}/$(date +%F)_$NOTENAME
 else
     echo "Invalid Input"
 fi
